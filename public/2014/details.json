@@ -3,19 +3,19 @@
     "year": 2014,
     "disciplines": [
         {
-            "label": "Ciências Humanas e suas Tecnologias",
+            "label": "Ciências Humanas e suas Tecnologias",
             "value": "ciencias-humanas"
         },
         {
-            "label": "Ciências da Natureza e suas Tecnologias",
+            "label": "Ciências da Natureza e suas Tecnologias",
             "value": "ciencias-natureza"
         },
         {
-            "label": "Linguagens, Códigos e suas Tecnologias",
+            "label": "Linguagens, Códigos e suas Tecnologias",
             "value": "linguagens"
         },
         {
-            "label": "Matemática e suas Tecnologias",
+            "label": "Matemática e suas Tecnologias",
             "value": "matematica"
         }
     ],
