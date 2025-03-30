@@ -3,9 +3,6 @@ import { getExams } from '@/lib/api/exams/get-exams';
 import { getExamDetails } from '@/lib/api/exams/get-exam-details';
 import { EnemApiError, handleAndReturnErrorResponse } from '@/lib/api/errors';
 import { RateLimiter } from '@/lib/api/rate-limit';
-import { logger } from '@/lib/api/logger';
-
-export const dynamic = 'force-dynamic';
 
 const rateLimiter = new RateLimiter();
 
@@ -21,7 +18,6 @@ export async function GET(
     try {
         const { rateLimitHeaders } = rateLimiter.check(request);
 
-        await logger(request);
 
         const examYears = await getExamsYears();
 
