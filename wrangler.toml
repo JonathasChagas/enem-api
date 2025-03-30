@@ -1,0 +1,8 @@
+name = "enem-simulado-api"
+
+compatibility_date = "2025-03-30"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = ".worker-next/assets"
+binding = "ASSETS"
