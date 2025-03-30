@@ -1,4 +1,4 @@
-name = "enem-simulado-api"
+name = "enemapi"
 
 compatibility_date = "2025-03-30"
 compatibility_flags = ["nodejs_compat"]
