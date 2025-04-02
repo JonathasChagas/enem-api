@@ -4,12 +4,9 @@ import { GetQuestionDetailsQuerySchema } from '@/lib/zod/schemas/questions';
 import { EnemApiError, handleAndReturnErrorResponse } from '@/lib/api/errors';
 import { getExamDetails } from '@/lib/api/exams/get-exam-details';
 import { getQuestionDetails } from '@/lib/api/questions/get-question-details';
-import { RateLimiter } from '@/lib/api/rate-limit';
 import { logger } from '@/lib/api/logger';
 
 export const dynamic = 'force-dynamic';
-
-const rateLimiter = new RateLimiter();
 
 type Params = {
     year: string;
@@ -21,8 +18,6 @@ export async function GET(
     { params }: { params: Params },
 ) {
     try {
-        const { rateLimitHeaders } = rateLimiter.check(request);
-
         await logger(request);
 
         const searchParams = request.nextUrl.searchParams;
@@ -64,7 +59,7 @@ export async function GET(
             });
         }
 
-        return Response.json(questionDetails, { headers: rateLimitHeaders });
+        return Response.json(questionDetails);
     } catch (error) {
         return handleAndReturnErrorResponse(error);
     }

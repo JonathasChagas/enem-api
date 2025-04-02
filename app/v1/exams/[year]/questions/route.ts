@@ -9,20 +9,15 @@ import {
 import { EnemApiError, handleAndReturnErrorResponse } from '@/lib/api/errors';
 import { getExamDetails } from '@/lib/api/exams/get-exam-details';
 import { getQuestionDetails } from '@/lib/api/questions/get-question-details';
-import { RateLimiter } from '@/lib/api/rate-limit';
 import { logger } from '@/lib/api/logger';
 
 export const dynamic = 'force-dynamic';
-
-const rateLimiter = new RateLimiter();
 
 export async function GET(
     request: NextRequest,
     { params }: { params: { year: string } },
 ) {
     try {
-        const { rateLimitHeaders } = rateLimiter.check(request);
-
         await logger(request);
 
         const searchParams = request.nextUrl.searchParams;
@@ -98,7 +93,6 @@ export async function GET(
                 },
                 questions,
             }),
-            { headers: rateLimitHeaders },
         );
     } catch (error) {
         return handleAndReturnErrorResponse(error);
