@@ -9,17 +9,12 @@ import {
 import { EnemApiError, handleAndReturnErrorResponse } from '@/lib/api/errors';
 import { getExamDetails } from '@/lib/api/exams/get-exam-details';
 import { getQuestionDetails } from '@/lib/api/questions/get-question-details';
-import { logger } from '@/lib/api/logger';
-
-export const dynamic = 'force-dynamic';
 
 export async function GET(
     request: NextRequest,
     { params }: { params: { year: string } },
 ) {
     try {
-        await logger(request);
-
         const searchParams = request.nextUrl.searchParams;
 
         let { limit, offset, language } = GetQuestionsQuerySchema.parse(

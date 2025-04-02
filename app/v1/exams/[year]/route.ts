@@ -2,9 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getExams } from '@/lib/api/exams/get-exams';
 import { getExamDetails } from '@/lib/api/exams/get-exam-details';
 import { EnemApiError, handleAndReturnErrorResponse } from '@/lib/api/errors';
-import { logger } from '@/lib/api/logger';
-
-export const dynamic = 'force-dynamic';
 
 const getExamsYears = async () => {
     const exams = await getExams();
@@ -16,8 +13,6 @@ export async function GET(
     { params }: { params: { year: string } },
 ) {
     try {
-        await logger(request);
-
         const examYears = await getExamsYears();
 
         if (!examYears.includes(Number(params.year))) {

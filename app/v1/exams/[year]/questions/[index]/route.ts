@@ -4,9 +4,6 @@ import { GetQuestionDetailsQuerySchema } from '@/lib/zod/schemas/questions';
 import { EnemApiError, handleAndReturnErrorResponse } from '@/lib/api/errors';
 import { getExamDetails } from '@/lib/api/exams/get-exam-details';
 import { getQuestionDetails } from '@/lib/api/questions/get-question-details';
-import { logger } from '@/lib/api/logger';
-
-export const dynamic = 'force-dynamic';
 
 type Params = {
     year: string;
@@ -18,8 +15,6 @@ export async function GET(
     { params }: { params: Params },
 ) {
     try {
-        await logger(request);
-
         const searchParams = request.nextUrl.searchParams;
 
         let { language } = GetQuestionDetailsQuerySchema.parse(
